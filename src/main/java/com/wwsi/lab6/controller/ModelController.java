@@ -1,5 +1,6 @@
 package com.wwsi.lab6.controller;
 
+import com.wwsi.lab6.model.UploadPhoto;
 import com.wwsi.lab6.model.db.Photo;
 import com.wwsi.lab6.service.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,19 @@ public class ModelController {
     }
 
     @GetMapping("/gallery")
-    public ModelAndView gallery(){
+    public ModelAndView gallery() {
         ModelAndView model = new ModelAndView("gallery");
         List<Photo> list = apiService.getPhotosFromMongo();
-        model.addObject("photos",list);
+        model.addObject("photos", list);
         return model;
     }
+
+    @GetMapping("/upload")
+    public ModelAndView upload() {
+        ModelAndView model = new ModelAndView("upload");
+        model.addObject("uploadPhoto", UploadPhoto.builder().build());
+        return model;
+    }
+
+
 }

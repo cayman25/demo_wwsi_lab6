@@ -13,7 +13,8 @@ public class SecurityConfiguration extends AADWebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         super.configure(http);
         http.authorizeRequests()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated()
+                .and().logout().logoutSuccessUrl("/login");
         // Do some custom configuration
     }
 }

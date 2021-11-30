@@ -1,11 +1,13 @@
 package com.wwsi.lab6.service;
 
+import com.wwsi.lab6.model.UploadPhoto;
 import com.wwsi.lab6.model.db.Photo;
 import com.wwsi.lab6.repository.PhotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +24,6 @@ public class MongoService {
     public Photo savePhoto(String id, String url, String description, List<String> tags) {
         return photoRepository.save(
                 Photo.builder()
-                        .name(id)
                         .creationDate(LocalDateTime.now())
                         .description(description)
                         .tags(tags)
@@ -37,5 +38,15 @@ public class MongoService {
     public void deleteById(String id){ photoRepository.deleteById(id);}
     public Optional<Photo> findOne(String id) {
         return photoRepository.findById(id);
+    }
+
+    public void savePhoto(UploadPhoto uploadPhoto, String url, String name) {
+        photoRepository.save(
+                Photo.builder()
+                        .name(name)
+                        .description(uploadPhoto.getDescription())
+                        .tags(Arrays.asList(uploadPhoto.getTags().split("\\s")))
+                        .url(url)
+                        .build());
     }
 }

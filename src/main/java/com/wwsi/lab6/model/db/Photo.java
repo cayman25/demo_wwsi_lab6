@@ -16,8 +16,8 @@ public class Photo {
 
     @Id
     private String _id;
-    private String name;
     private String description;
+    private String name;
     private List<String> tags;
     private LocalDateTime creationDate = LocalDateTime.now();
     private String url;
