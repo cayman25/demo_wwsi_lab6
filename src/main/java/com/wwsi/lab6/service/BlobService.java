@@ -22,7 +22,7 @@ public class BlobService {
     @PostConstruct
     private void init(){
         blobServiceClient = new BlobServiceClientBuilder().connectionString(connectionString).buildClient();
-        containerClient = blobServiceClient.getBlobContainerClient("gallery");
+        containerClient = blobServiceClient.getBlobContainerClient("mdrobotgallery");
     }
 
     public PagedIterable<BlobItem> getBlobs(){
