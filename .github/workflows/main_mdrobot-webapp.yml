@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'mdrobot-webapp'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7E5A0C720DEF42B8B03E2392F1D871BF }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7F2F39FCF00F4A2D86EEA18330E394B2 }}
           package: '*.jar'
